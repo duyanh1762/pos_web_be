@@ -20,6 +20,8 @@ import { BillService } from './bill/bill.service';
 import { BillController } from './bill/bill.controller';
 import { BillDetailService } from './bill_detail/bill_detail.service';
 import { BillDetailController } from './bill_detail/bill_detail.controller';
+import { LoginAuthenService } from './login_authen/login_authen.service';
+import { LoginAuthenController } from './login_authen/login_authen.controller';
 
 @Module({
   imports: [
@@ -40,7 +42,7 @@ import { BillDetailController } from './bill_detail/bill_detail.controller';
     TypeOrmModule.forFeature([PolicyEntity]),
     TypeOrmModule.forFeature([ItemEntity])
   ],
-  controllers: [AppController, StaffController, ShopController, PolicyController, ItemController, BillController, BillDetailController],
-  providers: [AppService, StaffService, ShopService, PolicyService, ItemService, BillService, BillDetailService],
+  controllers: [AppController, StaffController, ShopController, PolicyController, ItemController, BillController, BillDetailController, LoginAuthenController],
+  providers: [AppService, StaffService, ShopService, PolicyService, ItemService, BillService, BillDetailService, LoginAuthenService],
 })
 export class AppModule {}
