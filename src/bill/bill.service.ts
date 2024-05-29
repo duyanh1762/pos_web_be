@@ -15,8 +15,18 @@ export class BillService {
         return this.billRepo.find();
     }
 
-    getByID(id):Promise<BillEntity>{
-        return this.billRepo.findOne({where:{id}})
+    async getByID(id):Promise<BillEntity>{
+        let billG : BillEntity;
+        let billP = this.billRepo.find();
+        await billP.then((bills)=>{
+            bills.forEach((bill)=>{
+                if(id === bill.id){
+                    billG = bill;
+                }
+            });
+        });
+
+        return Promise.resolve(billG);
     }
     
     createBill(bill:BillEntity):Promise<BillEntity>{

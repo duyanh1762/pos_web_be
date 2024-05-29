@@ -14,8 +14,18 @@ export class ItemService {
         return this.itemRepo.find();
     }
 
-    getByID(id):Promise<ItemEntity>{
-        return this.itemRepo.findOne({where: {id}});
+    async getByID(id):Promise<ItemEntity>{
+        let itemG: ItemEntity;
+        let itemP = this.itemRepo.find();
+        await itemP.then((items)=>{
+            items.forEach((item)=>{
+                if(item.id === id){
+                    itemG = item;
+                }
+            });
+        });
+
+        return Promise.resolve(itemG);
     }
 
     createItem(item:ItemEntity):Promise<ItemEntity>{

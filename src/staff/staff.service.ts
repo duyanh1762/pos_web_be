@@ -14,8 +14,18 @@ export class StaffService {
     return this.staffRepo.find();
   }
 
-  getByID(id): Promise<StaffEntity> {
-    return this.staffRepo.findOne({ where: { id } });
+  async getByID(id): Promise<StaffEntity> {
+    let staffG; StaffEntity;
+    let staffP = this.staffRepo.find();
+    await staffP.then((staffs)=>{
+      staffs.forEach((staff)=>{
+        if(staff.id  === id){
+          staffG = staff;
+        }
+      });
+    });
+
+    return Promise.resolve(staffG);
   }
 
   createStaff(staff: StaffEntity): Promise<StaffEntity> {

@@ -14,8 +14,17 @@ export class PolicyService {
         return this.policyRepo.find();
     }
 
-    getByID(id):Promise<PolicyEntity>{
-        return this.policyRepo.findOne({where: {id}});
+    async getByID(id):Promise<PolicyEntity>{
+        let policyG: PolicyEntity;
+        let policys = this.policyRepo.find();
+        await policys.then((policyList)=>{
+            policyList.forEach((policy)=>{
+                if(id === policy.id){
+                    policyG = policy;
+                }
+            });
+        });
+        return Promise.resolve(policyG);
     }
 
     createPolicy(policy:PolicyEntity):Promise<PolicyEntity>{

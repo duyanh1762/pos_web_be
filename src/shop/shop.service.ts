@@ -14,8 +14,18 @@ export class ShopService {
         return this.shopRepo.find();
     }
 
-    getById(id):Promise<ShopEntity>{
-        return this.shopRepo.findOne({ where: { id } });
+    async getById(id):Promise<ShopEntity>{
+        let shopG : ShopEntity;
+        let shopP = this.shopRepo.find();
+        await shopP.then((shops)=>{
+            shops.forEach((shop)=>{
+                if(shop.id === id){
+                    shopG = shop;
+                }
+            });
+        });
+
+        return Promise.resolve(shopG);
     }
 
     createShop(shop:ShopEntity):Promise<ShopEntity>{
