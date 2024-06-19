@@ -21,12 +21,14 @@ export class LoginAuthenController {
     @Post()
     async authenLogin(@Body() data:DataReQuest){
         let checked;
+        let shopInfor:ShopEntity;
         if(data.authType === "SHOP_AUTH"){
             let shops =  this.shopRepo.find();
             await shops.then((rs)=>{
                 rs.forEach((shop)=>{
                     if(shop.name === data.username && shop.password === data.password){
                         checked = true;
+                        shopInfor = shop;
                     }
                 });
             });
@@ -43,9 +45,15 @@ export class LoginAuthenController {
             return false;
         }
         if(checked === true){
-            return true;
+            return {
+                success:true,
+                data:shopInfor,
+            };
         }else{
-            return false;
+            return {
+                success:false,
+                data:null,
+            };
         }
     }
     
