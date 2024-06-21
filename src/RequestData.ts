@@ -7,5 +7,5 @@ import { StaffEntity } from "./staff/staff.entity/staff.entity";
 
 export interface DataModeRequest{
     mode:string, // get || update || delete || create
-    data: string | BillEntity | BillDetailEntity | ItemEntity | PolicyEntity | ShopEntity | StaffEntity, 
+    data: string | BillEntity | BillDetailEntity | ItemEntity | PolicyEntity | ShopEntity | StaffEntity | number, 
 }

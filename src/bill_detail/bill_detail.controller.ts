@@ -28,12 +28,16 @@ export class BillDetailController {
     // }
     @Post()
     handlerDataRequest(@Body() data: DataModeRequest) {
-      if (data.mode === 'get') {
+      if (data.mode === 'get' && data.data ==="") {
         return this.detailService.getAll();
-      } else if (data.mode === 'create') {
+      }else if(data.mode === "get" && data.data != ""  ){
+        return this.detailService.getByBillID(data.data as number);
+      }else if (data.mode === 'create') {
         return this.detailService.createBillDetail(data.data as BillDetailEntity);
       } else if (data.mode === 'update') {
         return this.detailService.updateBillDetail(data.data as BillDetailEntity);
+      } else if(data.mode === "delete"){
+        return this.detailService.deleteBillDetail(data.data as BillDetailEntity);
       } else {
         return {
           result: 'Mode is not valid !',
