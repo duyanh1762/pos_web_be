@@ -12,4 +12,7 @@ export class ItemEntity {
 
     @Column()
     price:number;
+
+    @Column()
+    groupID:number;
 }

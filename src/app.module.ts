@@ -22,6 +22,9 @@ import { BillDetailService } from './bill_detail/bill_detail.service';
 import { BillDetailController } from './bill_detail/bill_detail.controller';
 import { LoginAuthenService } from './login_authen/login_authen.service';
 import { LoginAuthenController } from './login_authen/login_authen.controller';
+import { GroupEntity } from './group/group.entity/group.entity';
+import { GroupController } from './group/group.controller';
+import { GroupService } from './group/group.service';
 
 @Module({
   imports: [
@@ -32,7 +35,7 @@ import { LoginAuthenController } from './login_authen/login_authen.controller';
       username: 'bexuanmailonto',
       password: '170602cf',
       database: 'aha_pos_web',
-      entities: [StaffEntity,ShopEntity,BillDetailEntity,BillEntity,PolicyEntity,ItemEntity],
+      entities: [StaffEntity,ShopEntity,BillDetailEntity,BillEntity,PolicyEntity,ItemEntity,GroupEntity],
       synchronize: true,
     }),
     TypeOrmModule.forFeature([StaffEntity]),
@@ -40,9 +43,10 @@ import { LoginAuthenController } from './login_authen/login_authen.controller';
     TypeOrmModule.forFeature([BillEntity]),
     TypeOrmModule.forFeature([BillDetailEntity]),
     TypeOrmModule.forFeature([PolicyEntity]),
-    TypeOrmModule.forFeature([ItemEntity])
+    TypeOrmModule.forFeature([ItemEntity]),
+    TypeOrmModule.forFeature([GroupEntity]),
   ],
-  controllers: [AppController, StaffController, ShopController, PolicyController, ItemController, BillController, BillDetailController, LoginAuthenController],
-  providers: [AppService, StaffService, ShopService, PolicyService, ItemService, BillService, BillDetailService, LoginAuthenService],
+  controllers: [AppController, StaffController, ShopController, PolicyController, ItemController, BillController, BillDetailController, LoginAuthenController,GroupController],
+  providers: [AppService, StaffService, ShopService, PolicyService, ItemService, BillService, BillDetailService, LoginAuthenService,GroupService],
 })
 export class AppModule {}
