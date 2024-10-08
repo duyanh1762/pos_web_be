@@ -25,6 +25,7 @@ import { LoginAuthenController } from './login_authen/login_authen.controller';
 import { GroupEntity } from './group/group.entity/group.entity';
 import { GroupController } from './group/group.controller';
 import { GroupService } from './group/group.service';
+import { OrderProcessGateway } from './order-process/order-process.gateway';
 
 @Module({
   imports: [
@@ -47,6 +48,6 @@ import { GroupService } from './group/group.service';
     TypeOrmModule.forFeature([GroupEntity]),
   ],
   controllers: [AppController, StaffController, ShopController, PolicyController, ItemController, BillController, BillDetailController, LoginAuthenController,GroupController],
-  providers: [AppService, StaffService, ShopService, PolicyService, ItemService, BillService, BillDetailService, LoginAuthenService,GroupService],
+  providers: [AppService, StaffService, ShopService, PolicyService, ItemService, BillService, BillDetailService, LoginAuthenService,GroupService, OrderProcessGateway],
 })
 export class AppModule {}
