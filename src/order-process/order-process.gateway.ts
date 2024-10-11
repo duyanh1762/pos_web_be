@@ -15,26 +15,27 @@ export class OrderProcessGateway implements OnGatewayInit, OnGatewayConnection, 
   @WebSocketServer()
   server: Server;
 
-  // Hàm này được gọi khi gateway được khởi tạo
   afterInit(server: Server) {
     console.log('WebSocket Gateway initialized');
   }
 
-  // Hàm này được gọi khi client kết nối
   handleConnection(client: Socket) {
     console.log(`Client connected: ${client.id}`);
   }
 
-  // Hàm này được gọi khi client ngắt kết nối
   handleDisconnect(client: Socket) {
     console.log(`Client disconnected: ${client.id}`);
   }
 
-  // Nhận message từ client
   @SubscribeMessage('ws_order')
   handleOrder(@MessageBody() data: string): void {
     console.log('Order received:', data);
-    // Phát thông điệp tới tất cả các client khác
     this.server.emit('orderUpdate', data);
+  }
+
+  @SubscribeMessage('ws_confirm')
+  handleConfirm(@MessageBody() data: string): void {
+    console.log('Order type:', data);
+    this.server.emit('orderConfirm', data);
   }
 }
