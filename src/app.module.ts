@@ -26,6 +26,8 @@ import { GroupEntity } from './group/group.entity/group.entity';
 import { GroupController } from './group/group.controller';
 import { GroupService } from './group/group.service';
 import { OrderProcessGateway } from './order-process/order-process.gateway';
+import { QrController } from './qr_scan/qr/qr.controller';
+import { QrService } from './qr_scan/qr/qr.service';
 
 @Module({
   imports: [
@@ -47,7 +49,7 @@ import { OrderProcessGateway } from './order-process/order-process.gateway';
     TypeOrmModule.forFeature([ItemEntity]),
     TypeOrmModule.forFeature([GroupEntity]),
   ],
-  controllers: [AppController, StaffController, ShopController, PolicyController, ItemController, BillController, BillDetailController, LoginAuthenController,GroupController],
-  providers: [AppService, StaffService, ShopService, PolicyService, ItemService, BillService, BillDetailService, LoginAuthenService,GroupService, OrderProcessGateway],
+  controllers: [AppController, StaffController, ShopController, PolicyController, ItemController, BillController, BillDetailController, LoginAuthenController,GroupController,QrController],
+  providers: [AppService, StaffService, ShopService, PolicyService, ItemService, BillService, BillDetailService, LoginAuthenService,GroupService, OrderProcessGateway,QrService],
 })
 export class AppModule {}
