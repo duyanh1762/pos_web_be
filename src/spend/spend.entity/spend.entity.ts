@@ -14,5 +14,11 @@ export class SpendEntity {
     shopID:number;
 
     @Column()
+    des:string
+
+    @Column()
     status:string;
+    
+    @Column()
+    total:number;
 }
