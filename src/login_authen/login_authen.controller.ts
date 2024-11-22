@@ -3,6 +3,7 @@ import { Post } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ShopEntity } from 'src/shop/shop.entity/shop.entity';
 import { StaffEntity } from 'src/staff/staff.entity/staff.entity';
+import { UserEntity } from 'src/user/user.entity/user.entity';
 import { Repository } from 'typeorm';
 
 interface DataReQuest{
@@ -10,12 +11,16 @@ interface DataReQuest{
     password:string,
     authType: string,
 }
-
+interface UserLogin{
+    phoneName:string,
+    password:string,
+}
 @Controller('login-authen')
 export class LoginAuthenController {
     constructor(
         @InjectRepository(ShopEntity) private readonly shopRepo:Repository<ShopEntity>,
-        @InjectRepository(StaffEntity) private readonly staffRepo:Repository<StaffEntity>
+        @InjectRepository(StaffEntity) private readonly staffRepo:Repository<StaffEntity>,
+        @InjectRepository(UserEntity) private readonly userRepo:Repository<UserEntity>,
     ){}
 
     @Post()
@@ -55,6 +60,24 @@ export class LoginAuthenController {
                 data:null,
             };
         }
+    }
+
+    @Post("fast-food")
+    async handleRequest(@Body() dataRequest:UserLogin){
+        let dataResponse = {
+            user:null,
+            success:false,
+        };
+        let usersPromise:Promise<any> = this.userRepo.find();
+        await usersPromise.then((data:UserEntity[])=>{
+            data.forEach((u:UserEntity)=>{
+                if((dataRequest.phoneName === u.phone && dataRequest.password === u.password) || (dataRequest.phoneName === u.email && dataRequest.password === u.password)){
+                    dataResponse.user = u;
+                    dataResponse.success = true;
+                }
+            });
+        });
+        return dataResponse;
     }
     
 }

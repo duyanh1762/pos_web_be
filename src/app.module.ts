@@ -37,6 +37,9 @@ import { SpendEntity } from './spend/spend.entity/spend.entity';
 import { SpendDetailController } from './spend-detail/spend-detail.controller';
 import { SpendDetailService } from './spend-detail/spend-detail.service';
 import { SpendDetailEntity } from './spend-detail/spend-detail.entity/spend-detail.entity';
+import { UserController } from './user/user.controller';
+import { UserService } from './user/user.service';
+import { UserEntity } from './user/user.entity/user.entity';
 
 @Module({
   imports: [
@@ -47,7 +50,7 @@ import { SpendDetailEntity } from './spend-detail/spend-detail.entity/spend-deta
       username: 'bexuanmailonto',
       password: '170602cf',
       database: 'aha_pos_web',
-      entities: [StaffEntity,ShopEntity,BillDetailEntity,BillEntity,PolicyEntity,ItemEntity,GroupEntity,SpendItemEntity,SpendEntity,SpendDetailEntity],
+      entities: [StaffEntity,ShopEntity,BillDetailEntity,BillEntity,PolicyEntity,ItemEntity,GroupEntity,SpendItemEntity,SpendEntity,SpendDetailEntity,UserEntity],
       synchronize: true,
     }),
     TypeOrmModule.forFeature([StaffEntity]),
@@ -60,8 +63,9 @@ import { SpendDetailEntity } from './spend-detail/spend-detail.entity/spend-deta
     TypeOrmModule.forFeature([SpendItemEntity]),
     TypeOrmModule.forFeature([SpendEntity]),
     TypeOrmModule.forFeature([SpendDetailEntity]),
+    TypeOrmModule.forFeature([UserEntity]),
   ],
-  controllers: [AppController, StaffController, ShopController, PolicyController, ItemController, BillController, BillDetailController, LoginAuthenController,GroupController,QrController,SpendItemController, SpendController, SpendDetailController],
-  providers: [AppService, StaffService, ShopService, PolicyService, ItemService, BillService, BillDetailService, LoginAuthenService,GroupService,SpendItemService, OrderProcessGateway,QrService, SpendService, SpendDetailService],
+  controllers: [AppController, StaffController, ShopController, PolicyController, ItemController, BillController, BillDetailController, LoginAuthenController,GroupController,QrController,SpendItemController, SpendController, SpendDetailController, UserController],
+  providers: [AppService, StaffService, ShopService, PolicyService, ItemService, BillService, BillDetailService, LoginAuthenService,GroupService,SpendItemService, OrderProcessGateway,QrService, SpendService, SpendDetailService, UserService],
 })
 export class AppModule {}
