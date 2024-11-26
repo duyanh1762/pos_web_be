@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ItemEntity } from './item.entity/item.entity';
-import { Repository, UpdateResult } from 'typeorm';
+import { Like, Repository, UpdateResult } from 'typeorm';
 
 @Injectable()
 export class ItemService {
@@ -12,6 +12,10 @@ export class ItemService {
 
     getAll():Promise<ItemEntity[]>{
         return this.itemRepo.find();
+    }
+    
+    getFastFood():Promise<ItemEntity[]>{
+        return this.itemRepo.find( { where: { policyID:Like(23) } } );
     }
 
     async getByID(id):Promise<ItemEntity>{
@@ -24,7 +28,6 @@ export class ItemService {
                 }
             });
         });
-
         return Promise.resolve(itemG);
     }
 

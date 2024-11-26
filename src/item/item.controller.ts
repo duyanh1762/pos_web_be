@@ -41,4 +41,15 @@ export class ItemController {
         };
       }
     }
+
+    @Post("fast-food")
+    handleRequest(@Body() request:DataModeRequest){
+      if(request.mode === "get"){
+        return this.itemService.getFastFood();
+      }else{
+        return {
+          result: 'Mode is not valid !',
+        };
+      }
+    }
 }

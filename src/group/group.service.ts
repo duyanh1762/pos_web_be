@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GroupEntity } from './group.entity/group.entity';
-import { Repository, UpdateResult } from 'typeorm';
+import { Like, Repository, UpdateResult } from 'typeorm';
 
 @Injectable()
 export class GroupService {
@@ -10,7 +10,9 @@ export class GroupService {
     getAll():Promise<GroupEntity[]>{
         return this.groupRepo.find();
     }
-
+    getFastFood():Promise<GroupEntity[]>{
+        return this.groupRepo.find({where:{name:Like("%ff%")}});
+    }
     createGroup(gr:GroupEntity):Promise<GroupEntity>{
         return this.groupRepo.save(gr);
     }

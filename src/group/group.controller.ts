@@ -5,20 +5,31 @@ import { GroupEntity } from './group.entity/group.entity';
 
 @Controller('group')
 export class GroupController {
-    constructor(private groupService:GroupService){}
+  constructor(private groupService: GroupService) {}
 
-    @Post()
-    handlerDataRequest(@Body() data: DataModeRequest) {
-      if (data.mode === 'get') {
-        return this.groupService.getAll();
-      } else if (data.mode === 'create') {
-        return this.groupService.createGroup(data.data as GroupEntity);
-      } else if (data.mode === 'update') {
-        return this.groupService.updateGroup(data.data as GroupEntity);
-      } else {
-        return {
-          result: 'Mode is not valid !',
-        };
-      }
+  @Post()
+  handlerDataRequest(@Body() data: DataModeRequest) {
+    if (data.mode === 'get') {
+      return this.groupService.getAll();
+    } else if (data.mode === 'create') {
+      return this.groupService.createGroup(data.data as GroupEntity);
+    } else if (data.mode === 'update') {
+      return this.groupService.updateGroup(data.data as GroupEntity);
+    } else {
+      return {
+        result: 'Mode is not valid !',
+      };
     }
+  }
+
+  @Post('fast-food')
+  handleRequest(@Body() request: DataModeRequest) {
+    if (request.mode === 'get') {
+      return this.groupService.getFastFood();
+    } else {
+      return {
+        result: 'Mode is not valid !',
+      };
+    }
+  }
 }
