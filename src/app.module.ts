@@ -40,6 +40,12 @@ import { SpendDetailEntity } from './spend-detail/spend-detail.entity/spend-deta
 import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
 import { UserEntity } from './user/user.entity/user.entity';
+import { BillOrderEntity } from './bill_order/bill_order.entity/bill_order.entity';
+import { BillOrderController } from './bill_order/bill-order.controller';
+import { BillOrderService } from './bill_order/bill-order.service';
+import { BillOrderDetailController } from './bill_order_detail/bill_order_detail.controller';
+import { BillOrderDetailService } from './bill_order_detail/bill_order_detail.service';
+import { BillOrderDetailEntity } from './bill_order_detail/bill_order_detail.entity/bill_order_detail.entity';
 
 @Module({
   imports: [
@@ -50,22 +56,23 @@ import { UserEntity } from './user/user.entity/user.entity';
       username: 'bexuanmailonto',
       password: '170602cf',
       database: 'aha_pos_web',
-      entities: [StaffEntity,ShopEntity,BillDetailEntity,BillEntity,PolicyEntity,ItemEntity,GroupEntity,SpendItemEntity,SpendEntity,SpendDetailEntity,UserEntity],
+      entities: [StaffEntity,ShopEntity,BillDetailEntity,BillEntity,PolicyEntity,ItemEntity,GroupEntity,SpendItemEntity,SpendEntity,SpendDetailEntity,UserEntity,BillOrderEntity,BillOrderDetailEntity],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([StaffEntity]),
-    TypeOrmModule.forFeature([ShopEntity]),
-    TypeOrmModule.forFeature([BillEntity]),
-    TypeOrmModule.forFeature([BillDetailEntity]),
-    TypeOrmModule.forFeature([PolicyEntity]),
-    TypeOrmModule.forFeature([ItemEntity]),
-    TypeOrmModule.forFeature([GroupEntity]),
-    TypeOrmModule.forFeature([SpendItemEntity]),
-    TypeOrmModule.forFeature([SpendEntity]),
-    TypeOrmModule.forFeature([SpendDetailEntity]),
-    TypeOrmModule.forFeature([UserEntity]),
+    TypeOrmModule.forFeature([StaffEntity,ShopEntity,BillEntity,BillDetailEntity,PolicyEntity,ItemEntity,GroupEntity,SpendItemEntity,SpendEntity,SpendDetailEntity,UserEntity,BillOrderEntity,BillOrderDetailEntity]),
+    // TypeOrmModule.forFeature([ShopEntity]),
+    // TypeOrmModule.forFeature([BillEntity]),
+    // TypeOrmModule.forFeature([BillDetailEntity]),
+    // TypeOrmModule.forFeature([PolicyEntity]),
+    // TypeOrmModule.forFeature([ItemEntity]),
+    // TypeOrmModule.forFeature([GroupEntity]),
+    // TypeOrmModule.forFeature([SpendItemEntity]),
+    // TypeOrmModule.forFeature([SpendEntity]),
+    // TypeOrmModule.forFeature([SpendDetailEntity]),
+    // TypeOrmModule.forFeature([UserEntity]),
+    // TypeOrmModule.forFeature([BillOrderEntity]),
   ],
-  controllers: [AppController, StaffController, ShopController, PolicyController, ItemController, BillController, BillDetailController, LoginAuthenController,GroupController,QrController,SpendItemController, SpendController, SpendDetailController, UserController],
-  providers: [AppService, StaffService, ShopService, PolicyService, ItemService, BillService, BillDetailService, LoginAuthenService,GroupService,SpendItemService, OrderProcessGateway,QrService, SpendService, SpendDetailService, UserService],
+  controllers: [AppController, StaffController, ShopController, PolicyController, ItemController, BillController, BillDetailController, LoginAuthenController,GroupController,QrController,SpendItemController, SpendController, SpendDetailController, UserController,BillOrderController, BillOrderDetailController,BillOrderDetailController],
+  providers: [AppService, StaffService, ShopService, PolicyService, ItemService, BillService, BillDetailService, LoginAuthenService,GroupService,SpendItemService, OrderProcessGateway,QrService, SpendService, SpendDetailService, UserService,BillOrderService, BillOrderDetailService,BillOrderDetailService],
 })
 export class AppModule {}
