@@ -11,5 +11,8 @@ export class BillOrderEntity {
     userID: number;
 
     @Column()
-    status:string;
+    address:string;
+
+    @Column()
+    status:string; //not_confirm -> confirm -> delevering -> pay
 }
