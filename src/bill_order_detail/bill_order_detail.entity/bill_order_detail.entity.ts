@@ -11,6 +11,10 @@ export class BillOrderDetailEntity {
     num: number;
 
     @Column()
+    des:string;
+
+    @Column()
     billOrderID:number;
+
 }
    
