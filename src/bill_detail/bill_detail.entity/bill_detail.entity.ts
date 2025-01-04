@@ -14,5 +14,8 @@ export class BillDetailEntity {
     billID:number;
 
     @Column()
+    note:string;
+
+    @Column()
     policyID:number;
 }
