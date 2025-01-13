@@ -28,7 +28,7 @@ export class OrderProcessGateway implements OnGatewayInit, OnGatewayConnection, 
   }
 
   @SubscribeMessage('ws_order')
-  handleOrder(@MessageBody() data: string): void {
+  handleOrder(@MessageBody() data: any): void {
     console.log('Order received:', data);
     this.server.emit('orderUpdate', data);
   }
