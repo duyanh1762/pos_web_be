@@ -18,4 +18,10 @@ export class ShopEntity {
 
     @Column()
     number_table:number;
+
+    @Column()
+    bankID:string;
+
+    @Column()
+    account_no:string;
 }
