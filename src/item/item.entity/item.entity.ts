@@ -4,8 +4,8 @@ export class ItemEntity {
     @ PrimaryGeneratedColumn()
     id:number;
 
-    @Column()
-    policyID:number;
+    @Column({ type: 'json', nullable: true })
+    policyID:number[];
 
     @Column()
     name:string
