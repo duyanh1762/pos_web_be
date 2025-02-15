@@ -38,4 +38,10 @@ export class OrderProcessGateway implements OnGatewayInit, OnGatewayConnection, 
     console.log('Order type:', data);
     this.server.emit('orderConfirm', data);
   }
+
+  @SubscribeMessage("update_status")
+  updateStatusOrder(@MessageBody() data:any){
+    console.log("Order from fast food store: ", data);
+    this.server.emit("update_status_lated",data);
+  }
 }
