@@ -1,16 +1,13 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
-export class SpendDetailEntity {
+export class SupplierEntity {
     @PrimaryGeneratedColumn()
     id: number;
-
-    @Column()
-    spend_itemID: number;
   
     @Column()
-    num: number;
-
+    name: string;
+  
     @Column()
-    spendID:number;
+    phone: string;
 
 }
