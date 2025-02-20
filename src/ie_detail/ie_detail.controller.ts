@@ -14,6 +14,8 @@ export class IeDetailController {
       return this.detailService.createDetail(data.data as IeDetailEntity);
     } else if (data.mode === 'update') {
       return this.detailService.updateDetail(data.data as IeDetailEntity);
+    } else if (data.mode === 'delete') {
+      return this.detailService.deleteDetail(data.data as number);
     } else {
       return {
         result: 'Mode is not valid !',

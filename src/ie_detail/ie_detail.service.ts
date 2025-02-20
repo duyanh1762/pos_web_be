@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IeDetailEntity } from './ie_detail_entity';
-import { Repository, UpdateResult } from 'typeorm';
+import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 
 @Injectable()
 export class IeDetailService {
@@ -19,5 +19,8 @@ export class IeDetailService {
 
     updateDetail(d:IeDetailEntity):Promise<UpdateResult>{
         return this.ieDetailRepo.update(d.id,d);
+    }
+    deleteDetail(id:number):Promise<DeleteResult>{
+        return this.ieDetailRepo.delete(id);
     }
 }
