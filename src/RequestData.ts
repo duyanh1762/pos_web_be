@@ -3,6 +3,7 @@ import { BillDetailEntity } from './bill_detail/bill_detail.entity/bill_detail.e
 import { BillOrderEntity } from './bill_order/bill_order.entity/bill_order.entity';
 import { BillOrderDetailEntity } from './bill_order_detail/bill_order_detail.entity/bill_order_detail.entity';
 import { GoodsEntity } from './goods/goods_entity';
+import { GroupEntity } from './group/group.entity/group.entity';
 import { IeBillEntity } from './ie_bill/ie_bill_entity';
 import { IeDetailEntity } from './ie_detail/ie_detail_entity';
 import { ItemEntity } from './item/item.entity/item.entity';
@@ -31,5 +32,6 @@ export interface DataModeRequest {
     | GoodsEntity
     | IeBillEntity
     | IeDetailEntity
-    | SupplierEntity;
+    | SupplierEntity
+    | GroupEntity;
 }

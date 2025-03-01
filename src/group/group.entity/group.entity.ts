@@ -6,4 +6,7 @@ export class GroupEntity {
 
   @Column()
   name: string;
+
+  @Column()
+  type: string;
 }
