@@ -31,7 +31,9 @@ export class BillController {
   handlerDataRequest(@Body() data: DataModeRequest) {
     if (data.mode === 'get') {
       return this.billService.getAll();
-    } else if (data.mode === 'create') {
+    }else if(data.mode === "get-by-range-shop"){
+      return this.billService.getByRangeAndShop(data.data as string);
+    }else if (data.mode === 'create') {
       return this.billService.createBill(data.data as BillEntity);
     } else if (data.mode === 'update') {
       return this.billService.updateBill(data.data as BillEntity);

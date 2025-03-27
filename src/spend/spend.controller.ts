@@ -15,7 +15,9 @@ export class SpendController {
         }else{
             return this.spendService.getByDate(data.date);
         }
-      } else if (data.mode === 'create') {
+      }else if(data.mode === "get-by-range-shop"){
+        return this.spendService.getByRangeAndShop(data.data as string);
+      }else if (data.mode === 'create') {
         return this.spendService.createSpend(data.data as SpendEntity);
       } else if (data.mode === 'update') {
         return this.spendService.updateSpend(data.data as SpendEntity);
