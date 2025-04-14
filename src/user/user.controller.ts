@@ -1,12 +1,14 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { DataModeRequest } from 'src/RequestData';
 import { UserService } from './user.service';
 import { UserEntity } from './user.entity/user.entity';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('user')
 export class UserController {
     constructor(private userService:UserService){}
 
+    @UseGuards(AuthGuard('jwt'))
     @Post()
     handleRequest(@Body() dataRequest:DataModeRequest){
         if(dataRequest.mode === "get"){

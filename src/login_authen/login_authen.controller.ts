@@ -123,22 +123,22 @@ export class LoginAuthenController {
         }
     }
 
-    @Post("fast-food")
-    async handleRequest(@Body() dataRequest:UserLogin){
-        let dataResponse = {
-            user:null,
-            success:false,
-        };
-        let usersPromise:Promise<any> = this.userRepo.find();
-        await usersPromise.then((data:UserEntity[])=>{
-            data.forEach((u:UserEntity)=>{
-                if((dataRequest.phoneName === u.phone && dataRequest.password === u.password) || (dataRequest.phoneName === u.email && dataRequest.password === u.password)){
-                    dataResponse.user = u;
-                    dataResponse.success = true;
-                }
-            });
-        });
-        return dataResponse;
-    }
-    
+    // @Post("fast-food")
+    // async handleRequest(@Body() dataRequest:UserLogin){
+    //     let dataResponse = {
+    //         user:null,
+    //         success:false,
+    //     };
+    //     let usersPromise:Promise<any> = this.userRepo.find();
+    //     await usersPromise.then((data:UserEntity[])=>{
+    //         data.forEach((u:UserEntity)=>{
+    //             if((dataRequest.phoneName === u.phone && dataRequest.password === u.password) || (dataRequest.phoneName === u.email && dataRequest.password === u.password)){
+    //                 dataResponse.user = u;
+    //                 dataResponse.success = true;
+    //             }
+    //         });
+    //     });
+    //     return dataResponse;
+    // }
+
 }

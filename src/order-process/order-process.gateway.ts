@@ -9,7 +9,7 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 
-@WebSocketGateway({ cors: true }) // CORS: Nếu cần mở quyền truy cập từ client
+@WebSocketGateway({cors:true}) // CORS: Nếu cần mở quyền truy cập từ client
 export class OrderProcessGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
   
   @WebSocketServer()

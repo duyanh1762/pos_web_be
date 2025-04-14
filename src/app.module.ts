@@ -52,6 +52,7 @@ import { GoodsEntity } from './goods/goods_entity';
 import { IeBillEntity } from './ie_bill/ie_bill_entity';
 import { IeDetailEntity } from './ie_detail/ie_detail_entity';
 import { SupplierEntity } from './supplier/supplier_entity';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -97,6 +98,7 @@ import { SupplierEntity } from './supplier/supplier_entity';
       IeDetailEntity,
       SupplierEntity,
     ]),
+    AuthModule,
   ],
   controllers: [
     AppController,
