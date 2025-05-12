@@ -61,7 +61,7 @@ import { AuthModule } from './auth/auth.module';
       port: 3306,
       username: 'bexuanmailonto',
       password: '170602cf',
-      database: 'aha_pos_web',
+      database: 'pos_web_be',
       entities: [
         StaffEntity,
         ShopEntity,
